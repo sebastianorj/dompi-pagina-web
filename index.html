@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOMPI - Encargos y domicilios en Ibagué</title>
+    <link rel="stylesheet" href="style-guide.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="icon" type="image/png" href="brand/favicon-transparent.png">
+    <link rel="apple-touch-icon" href="brand/favicon-transparent.png">
+    <link rel="preload" as="image" href="images/hero-team-mobile.webp" type="image/webp" media="(max-width: 860px)">
+    <link rel="preload" as="image" href="images/hero-team-desktop.webp" type="image/webp" media="(min-width: 861px)">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="brand/logo-wordmark.webp" alt="DOMPI" width="150" height="37">
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="active">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="#seguimiento">Seguimiento</a></li>
+            <li><a href="quienes-somos.html">Quiénes somos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Activar modo oscuro" aria-pressed="false">
+                <i class="fas fa-moon theme-icon" aria-hidden="true"></i>
+            </button>
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-controls="navLinks" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Tus encargos en Ibagué, rápidos y seguros</h1>
+            <p>Con DOMPI, tus paquetes y mandados llegan a tiempo. Somos la red de encargos más confiable de la ciudad y cubrimos cada rincón de Ibagué.</p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="servicios.html" class="btn">Calcula tu envío</a>
+                <a href="contacto.html" class="btn btn-secondary">Hablar con un asesor</a>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="section-title">
+            <h2>¿Por qué elegir DOMPI?</h2>
+            <p>Nuestra tecnología y equipo humano hacen la diferencia</p>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <img src="images/icon-fast.svg" alt="Velocidad" class="card-icon">
+                <h3>Velocidad de rayo</h3>
+                <p>Entregas en menos de 45 minutos en el perímetro urbano de Ibagué.</p>
+            </div>
+            <div class="card">
+                <img src="images/icon-secure.svg" alt="Seguridad" class="card-icon">
+                <h3>Seguridad total</h3>
+                <p>Todos tus envíos están asegurados y rastreados en tiempo real.</p>
+            </div>
+            <div class="card">
+                <img src="images/icon-local.svg" alt="Cobertura" class="card-icon">
+                <h3>Cobertura local</h3>
+                <p>Desde El Salado hasta Boquerón, llegamos a cualquier barrio de la ciudad.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="proof-section">
+        <div class="proof-layout">
+            <div class="proof-media">
+                <img src="images/delivery-rider.webp" alt="Repartidor de DOMPI recorriendo Ibagué"
+                    width="800" height="800" loading="lazy">
+            </div>
+            <div class="proof-content">
+                <span class="eyebrow">Atención local</span>
+                <h2>Tu encargo se mueve con un equipo que conoce la ciudad</h2>
+                <p>Coordinamos documentos, compras y paquetes según el sector, el tamaño y el horario que necesitas.</p>
+                <ul class="proof-points">
+                    <li><i class="fab fa-whatsapp" aria-hidden="true"></i> Atención directa por WhatsApp</li>
+                    <li><i class="fas fa-bolt" aria-hidden="true"></i> Servicios exprés y programados</li>
+                    <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Cobertura por zonas en Ibagué</li>
+                </ul>
+                <a href="contacto.html" class="btn">Solicitar un servicio</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="coverage-section" id="cobertura">
+        <div class="section-title">
+            <span class="eyebrow">Cobertura en la ciudad</span>
+            <h2>Llegamos a los sectores que más se mueven</h2>
+            <p>Explora nuestros puntos de cobertura referenciales en Ibagué.</p>
+        </div>
+
+        <div class="coverage-layout">
+            <div class="coverage-map-shell">
+                <div id="coverageMap" class="coverage-map" role="region"
+                    aria-label="Mapa interactivo de los sectores con cobertura de DOMPI en Ibagué"></div>
+                <div class="map-fallback" id="mapFallback" hidden>
+                    <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
+                    <p>El mapa no está disponible en este momento. Consulta los sectores en la lista de cobertura.</p>
+                </div>
+                <p class="map-note">Los puntos son referenciales. Confirma la cobertura exacta al solicitar el servicio.</p>
+            </div>
+
+            <div class="coverage-zones" aria-label="Zonas de cobertura">
+                <button class="zone-card" type="button" data-zone="centro">
+                    <span class="zone-dot zone-dot--centro" aria-hidden="true"></span>
+                    <span><strong>Zona centro</strong><small>Centro, Cádiz y La Pola</small></span>
+                </button>
+                <button class="zone-card" type="button" data-zone="oriente">
+                    <span class="zone-dot zone-dot--oriente" aria-hidden="true"></span>
+                    <span><strong>Norte y oriente</strong><small>Jordán, Multicentro y Piedrapintada</small></span>
+                </button>
+                <button class="zone-card" type="button" data-zone="especial1">
+                    <span class="zone-dot zone-dot--especial1" aria-hidden="true"></span>
+                    <span><strong>Zona especial 1</strong><small>El Salado, Picaleña y Mirolindo</small></span>
+                </button>
+                <button class="zone-card" type="button" data-zone="especial2">
+                    <span class="zone-dot zone-dot--especial2" aria-hidden="true"></span>
+                    <span><strong>Zona especial 2</strong><small>Boquerón, Ricaurte y sur de Ibagué</small></span>
+                </button>
+                <a class="coverage-cta" href="servicios.html#calculador">
+                    Calcular un servicio <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="process-section" id="como-trabajamos">
+        <div class="section-title">
+            <span class="eyebrow">Un proceso claro</span>
+            <h2>Así movemos tu encargo</h2>
+            <p>Cuatro pasos, desde tu solicitud hasta la entrega.</p>
+        </div>
+
+        <div class="process-flow" role="list" aria-label="Proceso de un encargo con DOMPI">
+            <article class="process-step" role="listitem">
+                <div class="process-icon">
+                    <span class="process-number">1</span>
+                    <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+                </div>
+                <div>
+                    <h3>Solicita</h3>
+                    <p>Cuéntanos qué debemos recoger y comparte el origen y el destino.</p>
+                </div>
+            </article>
+
+            <article class="process-step" role="listitem">
+                <div class="process-icon">
+                    <span class="process-number">2</span>
+                    <i class="fas fa-calculator" aria-hidden="true"></i>
+                </div>
+                <div>
+                    <h3>Cotizamos</h3>
+                    <p>Confirmamos la zona, el tamaño y el valor estimado del servicio.</p>
+                </div>
+            </article>
+
+            <article class="process-step" role="listitem">
+                <div class="process-icon">
+                    <span class="process-number">3</span>
+                    <i class="fas fa-motorcycle" aria-hidden="true"></i>
+                </div>
+                <div>
+                    <h3>Recogemos</h3>
+                    <p>Un Domper recibe tu encargo en el punto que acordamos contigo.</p>
+                </div>
+            </article>
+
+            <article class="process-step" role="listitem">
+                <div class="process-icon">
+                    <span class="process-number">4</span>
+                    <i class="fas fa-check-circle" aria-hidden="true"></i>
+                </div>
+                <div>
+                    <h3>Entregamos</h3>
+                    <p>Llevamos el encargo a su destino y confirmamos que fue entregado.</p>
+                </div>
+            </article>
+        </div>
+
+        <div class="process-action">
+            <a href="servicios.html#calculador" class="btn">Iniciar un encargo</a>
+        </div>
+    </section>
+
+    <section class="tracking-section" id="seguimiento">
+        <div class="tracking-layout">
+            <div class="tracking-intro">
+                <span class="eyebrow">Seguimiento del servicio</span>
+                <h2>Consulta el estado de tu encargo</h2>
+                <p>Ingresa el código recibido al solicitar el servicio para revisar en qué etapa se encuentra.</p>
+
+                <div class="demo-tracking">
+                    <span>Código de demostración</span>
+                    <button type="button" id="useDemoTracking">DOMPI-1024</button>
+                </div>
+                <p class="tracking-note">La consulta utiliza datos de demostración hasta conectar la base de pedidos real.</p>
+            </div>
+
+            <div class="tracking-panel">
+                <form class="tracking-form" id="trackingForm" novalidate>
+                    <label for="trackingCode">Código de seguimiento</label>
+                    <div class="tracking-input-row">
+                        <input type="text" id="trackingCode" class="form-control" placeholder="DOMPI-1024"
+                            autocomplete="off" maxlength="14" aria-describedby="trackingHint trackingError">
+                        <button type="submit" class="btn" id="trackingSubmit">Consultar estado</button>
+                    </div>
+                    <p class="tracking-hint" id="trackingHint">Formato: DOMPI seguido de un guion y entre 4 y 8 números.</p>
+                    <p class="tracking-error" id="trackingError" role="alert" hidden></p>
+                </form>
+
+                <div class="tracking-result" id="trackingResult" aria-live="polite" hidden>
+                    <div class="tracking-result-header">
+                        <div>
+                            <span>Encargo <strong id="trackingResultCode">DOMPI-1024</strong></span>
+                            <h3 id="trackingStatusTitle">En camino</h3>
+                        </div>
+                        <span class="tracking-status-badge" id="trackingStatusBadge">Etapa 3 de 4</span>
+                    </div>
+
+                    <ol class="tracking-progress" aria-label="Progreso del encargo">
+                        <li data-tracking-step="0">
+                            <span class="tracking-step-number">1</span>
+                            <div><strong>Solicitud recibida</strong><small>Registramos los datos del servicio.</small></div>
+                        </li>
+                        <li data-tracking-step="1">
+                            <span class="tracking-step-number">2</span>
+                            <div><strong>Encargo recogido</strong><small>El paquete ya está con el repartidor.</small></div>
+                        </li>
+                        <li data-tracking-step="2">
+                            <span class="tracking-step-number">3</span>
+                            <div><strong>En camino</strong><small>El encargo se dirige al destino.</small></div>
+                        </li>
+                        <li data-tracking-step="3">
+                            <span class="tracking-step-number">4</span>
+                            <div><strong>Entregado</strong><small>La entrega fue confirmada.</small></div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="servicios.html" style="text-decoration: none; color: inherit;">Servicios</a>
+            <a href="#seguimiento" style="text-decoration: none; color: inherit;">Seguimiento</a>
+            <a href="quienes-somos.html" style="text-decoration: none; color: inherit;">Quiénes somos</a>
+            <a href="contacto.html" style="text-decoration: none; color: inherit;">Contacto</a>
+        </div>
+        <p>&copy; 2026 DOMPI - Encargos en Ibagué.</p>
+    </footer>
+
+    <a href="https://wa.me/573170245468" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar a DOMPI por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>

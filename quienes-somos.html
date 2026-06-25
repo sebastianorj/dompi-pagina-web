@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes somos - DOMPI Ibagué</title>
+    <link rel="stylesheet" href="style-guide.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="brand/favicon-transparent.png">
+    <link rel="apple-touch-icon" href="brand/favicon-transparent.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="script.js" defer></script>
+    <style>
+        .about-section {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        @media (max-width: 600px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="brand/logo-wordmark.webp" alt="DOMPI" width="150" height="37">
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="index.html#seguimiento">Seguimiento</a></li>
+            <li><a href="quienes-somos.html" class="active">Quiénes somos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Activar modo oscuro" aria-pressed="false">
+                <i class="fas fa-moon theme-icon" aria-hidden="true"></i>
+            </button>
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-controls="navLinks" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero" style="min-height: 50vh; padding: 2rem 5%;">
+        <div class="hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h1>Creemos en la conexión local</h1>
+            <p>Nacimos en el corazón de Ibagué con un propósito simple: ayudar a los ibaguereños con sus vueltas y mandados cotidianos.</p>
+        </div>
+    </header>
+
+    <section class="about-section">
+        <div class="section-title">
+            <h2>Nuestra historia</h2>
+            <p>De un sueño local a la red de encargos más eficiente de Ibagué</p>
+        </div>
+        <p class="body-copy" style="margin-bottom: 2rem;">
+            DOMPI comenzó en 2024 como respuesta a la necesidad de contar con servicios de mensajería que realmente entendieran las calles y el ritmo de vida de Ibagué. No solo entregamos paquetes: también les ahorramos tiempo a los ibaguereños al realizar sus encargos, compras y trámites.
+        </p>
+        <p class="body-copy">
+            Hoy nos enorgullece ser una empresa 100 % tolimense que impulsa la economía local y brinda oportunidades de empleo a nuestros «Dompers», quienes conocen cada rincón de la Ciudad Musical.
+        </p>
+
+        <div class="values-grid">
+            <div class="card" style="text-align: left;">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Misión</h3>
+                <p>Facilitar la vida de los ibaguereños mediante un servicio de encargos confiable, rápido y con sentido humano.</p>
+            </div>
+            <div class="card" style="text-align: left;">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Visión</h3>
+                <p>Ser la plataforma líder de servicios locales en Ibagué, transformando la manera en que la ciudad se mueve.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 DOMPI - Encargos en Ibagué.</p>
+    </footer>
+
+    <a href="https://wa.me/573170245468" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar a DOMPI por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
